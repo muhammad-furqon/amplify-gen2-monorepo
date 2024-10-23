@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import { addComment, deleteComment } from "@/actions/actions";
 
 import React from "react";
-import { Schema } from "@/amplify/data/resource";
+import { Schema } from "@/data-schema";
 import Comments from "@/components/AddComment";
 
 
