@@ -1,5 +1,5 @@
 import { createServerRunner } from '@aws-amplify/adapter-nextjs';
-import outputs from '@/amplify_outputs.json';
+import outputs from '@/amplify-outputs';
 import { cookies } from 'next/headers';
 import { getCurrentUser } from 'aws-amplify/auth/server';
 // https://docs.amplify.aws/nextjs/build-a-backend/data/connect-from-server-runtime/nextjs-server-runtime/

@@ -8,6 +8,7 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias['@'] = path.resolve(__dirname);
     config.resolve.alias['@/data-schema'] = path.resolve(__dirname, 'packages/my-shared-backend/amplify/data/resource');
+    config.resolve.alias['@/amplify-outputs'] = path.resolve(__dirname, 'amplify_outputs');
     return config;
   },
 };
