@@ -10,6 +10,7 @@ import { useTransition } from "react";
 
 export default function NavBar({ isSignedIn, isAdmin }: { isSignedIn: boolean , isAdmin:boolean}) {
   const [authCheck, setAuthCheck] = useState(isSignedIn);
+  const [adminCheck,] = useState(isAdmin);
   const [, startTransition] = useTransition();
 
   const router = useRouter();
@@ -18,8 +19,14 @@ export default function NavBar({ isSignedIn, isAdmin }: { isSignedIn: boolean , 
       switch (data.payload.event) {
         case "signedIn":
           setAuthCheck(true);
-          startTransition(() => router.push("/"));
-          startTransition(() => router.refresh());
+          if (adminCheck) {
+            startTransition(() => router.push("/admin")); 
+            startTransition(() => router.refresh()); 
+          }
+          else {
+            startTransition(() => router.push("/"));
+            startTransition(() => router.refresh());
+          }
           break;
         case "signedOut":
           setAuthCheck(false);
@@ -31,7 +38,7 @@ export default function NavBar({ isSignedIn, isAdmin }: { isSignedIn: boolean , 
     });
 
     return () => hubListenerCancel();
-  }, [router]);
+  }, [adminCheck, router]);
 
   const signOutSignIn = async () => {
     if (authCheck) {
